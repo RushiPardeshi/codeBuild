@@ -11,6 +11,6 @@ phases:
       - pwd
       - Is -al
   
-  artifacts:
-    files:
-    - '**/*'
+artifacts:
+  files:
+  - '**/*'
