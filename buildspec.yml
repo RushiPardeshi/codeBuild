@@ -9,7 +9,7 @@ phases:
     commands:
       - echo Build completed 
       - pwd
-      - Is -al
+      - ls -al
   
 artifacts:
   files:
