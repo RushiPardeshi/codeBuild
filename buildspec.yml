@@ -4,7 +4,7 @@ phases:
     commands:
       - echo Build started 
       - echo Compiling the Python code…..
-      - pip install requests -t .
+      - unzip python.zip
   post_build: 
     commands:
       - echo Build completed 
