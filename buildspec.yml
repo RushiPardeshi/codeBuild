@@ -1,16 +1,18 @@
 version: 0.2
 phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - echo "Installing dependencies..."
+      # - pip install -r requirements.txt
   build:
     commands:
-      - echo Build started 
-      - echo Compiling the Python code…..
-      - unzip python.zip
-  post_build: 
+      - echo "Zipping deployment package..."
+      - zip -r9 ../deployment-package.zip .
+      - zip -g ../deployment-package.zip lambda_function.py
+      - cd ..
+  post_build:
     commands:
-      - echo Build completed 
-      - pwd
-      - ls -al
-  
-artifacts:
-  files:
-  - '**/*'
+      - echo "Updating lambda function"
+      - aws lambda update-function-code --function-name index-photos --zip-file fileb://deployment-package.zip
